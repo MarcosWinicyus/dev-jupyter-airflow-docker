@@ -7,9 +7,12 @@ LABEL maintainer="marcos.lima@simpleagro.com.br"
 
 USER root
 
-RUN pip install --upgrade pip apache-airflow \
-    && pip install ipykernel \
+RUN && curl -sL https://deb.nodesource.com/setup_14.x | sudo bash - \
+    && apt-get install nodejs \
+    && pip install --upgrade pip apache-airflow \
+    && pip install jupyterlab \
     && pip install papermill \
+    && jupyter labextension install @jupyterlab/celltags \
     && apt-get clean \
     && rm -rf \
         /var/lib/apt/lists/* \
@@ -19,4 +22,3 @@ RUN pip install --upgrade pip apache-airflow \
         /usr/share/doc \
         /usr/share/doc-base
 
-USER airflow
