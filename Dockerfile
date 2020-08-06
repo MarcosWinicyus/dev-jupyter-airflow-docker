@@ -7,12 +7,12 @@ LABEL maintainer="marcos.lima@simpleagro.com.br"
 
 USER root
 
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
-    && apt-get install nodejs \
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash \
+    && apt-get install nodejs -y\
     && pip install --upgrade pip apache-airflow \
     && pip install jupyterlab \
     && pip install papermill \
-    && jupyter labextension install @jupyterlab/celltags \
+    && jupyter labextension install --minimize=False @jupyterlab/celltags \
     && apt-get clean \
     && rm -rf \
         /var/lib/apt/lists/* \
