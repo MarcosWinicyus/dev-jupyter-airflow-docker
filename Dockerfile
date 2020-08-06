@@ -7,7 +7,7 @@ LABEL maintainer="marcos.lima@simpleagro.com.br"
 
 USER root
 
-RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo bash - \
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
     && apt-get install nodejs \
     && pip install --upgrade pip apache-airflow \
     && pip install jupyterlab \
